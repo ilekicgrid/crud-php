@@ -284,6 +284,7 @@ RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini && \
 ADD src/ /var/www/html/
 ADD errors/ /var/www/errors
 
+COPY static /usr/share/nginx/html
 
 EXPOSE 443 80 8080
 
