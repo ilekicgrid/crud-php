@@ -1,7 +1,7 @@
-FROM nginx:latest
+FROM php:8.1-apache-buster
 
 RUN apt update && apt install -y php php-cli php-fpm php-json php-mysql php-zip php-gd  php-mbstring php-curl php-xml php-pear php-bcmath
 
-COPY static/ /usr/share/nginx/html
+COPY static/ /var/www/html
 
-RUN rm -rf /usr/share/nginx/html/index.html
+RUN rm -rf /var/www/html/index.html
