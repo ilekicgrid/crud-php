@@ -118,4 +118,3 @@ function TableExists($tableName, $connection, $dbName) {
   return false;
 }
 ?>                        
-                
