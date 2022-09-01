@@ -34,13 +34,18 @@ pipeline {
         
         stage("SCM checkout"){
            steps{
-                git https://github.com/ilekicgrid/Ansible-for-jenkins.git   
-            }
+               script{
+                   git https://github.com/ilekicgrid/Ansible-for-jenkins.git   
+               }
+                
+           }
         }
         
         stage("Execute Ansible"){
             steps{
-                ansiblePlaybook become: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'my_ansible', inventory: 'hosts.yml', playbook: 'sytes.yml'
+                script{
+                    ansiblePlaybook become: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'my_ansible', inventory: 'hosts.yml', playbook: 'sytes.yml' 
+                }
             }
         }
         
