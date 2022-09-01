@@ -35,7 +35,7 @@ pipeline {
         stage("SCM checkout"){
            steps{
                script{
-                   git https://github.com/ilekicgrid/Ansible-for-jenkins.git   
+                   git "https://github.com/ilekicgrid/Ansible-for-jenkins.git"   
                }
                 
            }
