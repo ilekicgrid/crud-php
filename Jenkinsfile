@@ -18,9 +18,6 @@ pipeline {
                 script {
                     app = docker.build("jenkins_repo")
                 }
-//                 script{
-//                     git "https://github.com/ilekicgrid/Ansible-for-jenkins.git"
-//                 }
             }
         }
 
@@ -31,10 +28,6 @@ pipeline {
                         app.push("${env.BUILD_NUMBER}")  
                         app.push("latest")
                     }
-                }
-                script{
-                    ansiblePlaybook become: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'my_ansible', inventory: 'hosts.yml', playbook: 'sites.yml'
-
                 }
             }
         }
