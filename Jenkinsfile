@@ -10,6 +10,9 @@ pipeline {
                 script {
                     checkout scm
                 }
+                script{
+                   git "https://github.com/ilekicgrid/Ansible-for-jenkins.git"   
+               }
             }
         }
 
@@ -28,26 +31,12 @@ pipeline {
                         app.push("${env.BUILD_NUMBER}")  
                         app.push("latest")
                     }
-                }
-            }
-        }
-        
-        stage("SCM checkout"){
-           steps{
-               script{
-                   git "https://github.com/ilekicgrid/Ansible-for-jenkins.git"   
-               }
-                
-           }
-        }
-        
-        stage("Execute Ansible"){
-            steps{
-                script{
+                 script{
                     ansiblePlaybook become: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'my_ansible', inventory: 'hosts.yml', playbook: 'sytes.yml' 
-                }
+                 }
+                
+               }
             }
-        }
-        
+        }  
     }
 }
