@@ -33,7 +33,7 @@ pipeline {
                     }
                 }
                 script{
-                    ansiblePlaybook become: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'my_ansible', inventory: 'hosts.yml', playbook: 'sytes.yml'
+                    ansiblePlaybook become: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'my_ansible', inventory: 'hosts.yml', playbook: 'sites.yml'
 
                 }
             }
