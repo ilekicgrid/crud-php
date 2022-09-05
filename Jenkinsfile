@@ -10,9 +10,6 @@ pipeline {
                 script {
                     checkout scm
                 }
-                script{
-                   git "https://github.com/ilekicgrid/Ansible-for-jenkins.git"   
-               }
             }
         }
 
@@ -20,6 +17,9 @@ pipeline {
             steps {
                 script {
                     app = docker.build("jenkins_repo")
+                }
+                script{
+                    git "https://github.com/ilekicgrid/Ansible-for-jenkins.git"
                 }
             }
         }
