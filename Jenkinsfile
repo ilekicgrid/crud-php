@@ -4,7 +4,6 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        
         stage('Clone repository') {
             steps {
                 script {
@@ -16,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    app = docker.build("jenkins_repo")
+                    app = docker.build("crud-php")
                 }
             }
         }
@@ -25,11 +24,10 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://837222496434.dkr.ecr.eu-central-1.amazonaws.com/jenkins_repo','ecr:eu-central-1:aws-credentials') {
-                        app.push("${env.BUILD_NUMBER}")  
-                        app.push("latest")
-                    }
+                    app.push("${env.BUILD_NUMBER}")
+                    app.push("latest")
                 }
             }
         }
     }
-}
+}}
