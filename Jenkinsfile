@@ -18,9 +18,9 @@ pipeline {
                 script {
                     app = docker.build("jenkins_repo")
                 }
-                script{
-                    git "https://github.com/ilekicgrid/Ansible-for-jenkins.git"
-                }
+//                 script{
+//                     git "https://github.com/ilekicgrid/Ansible-for-jenkins.git"
+//                 }
             }
         }
 
@@ -34,7 +34,8 @@ pipeline {
                 script{
                     ansiblePlaybook become: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'my_ansible', inventory: 'hosts.yml', playbook: 'sytes.yml' 
                 }
+                }
             }
-        }  
+        }
     }
 }
